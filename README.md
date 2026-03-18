@@ -1,6 +1,6 @@
 # Spatial PDE Modelling of α-Synuclein Aggregation in Parkinson's Disease
 
-**BENG 227 — Computational Neuroscience | UC San Diego**  
+**BENG 227 — Transport Phenomena in Living Systems | UC San Diego**  
 **Group 8: Nitin Shreyes Venkatesan, Bivas Talukdar**
 
 ---
