@@ -101,35 +101,7 @@ The length-dependent oxidative stress model S₁(L) = S₁_base + α·L
 The tristable window (900–1660 µm) coincides with the typical range of
 human nigrostriatal dopaminergic axons.
 
----
 
-## Repository Structure
-
-```
-📦 asyn-spatial-pde/
-├── 📂 notebooks/
-│   ├── 01_ODE_tristability.ipynb          # Yang ODE validation + bifurcation
-│   ├── 02_numerical_stability.ipynb       # Von Neumann + coupled analysis
-│   ├── 03_failure_mode_analysis.ipynb     # Soma-only Beclin1 failure modes
-│   ├── 04_homogeneous_validation.ipynb    # Spatial PDE → ODE recovery
-│   ├── 05_spatial_experiment_fixedS1.ipynb # Fixed S1 axon length sweep
-│   └── 06_S1L_parameter_analysis.ipynb   # S1(L) model + bifurcation
-├── 📂 reports/
-│   ├── numerical_stability_report.tex     # Von Neumann analysis report
-│   ├── failure_mode_report.tex            # Soma-only failure analysis
-│   └── axon_vulnerability_report.tex      # Main results report
-├── 📂 figures/
-│   ├── bifurcation_fsolve.png             # Bifurcation diagrams S1/S2/S3
-│   ├── von_neumann_all_states.png         # 3×6 amplification factor grid
-│   ├── coupled_stability.png              # Spectral radius analysis
-│   ├── failure_mode_*.png                 # Four failure mode figures
-│   ├── axon_length_fixed_S1.png           # Fixed-S1 axon comparison
-│   ├── state_boundaries_S1L.png           # S1(L) bifurcation diagrams
-│   └── axon_state_strips.png              # State classification strips
-└── README.md
-```
-
----
 
 ## Installation
 
@@ -155,36 +127,6 @@ pip install numpy scipy matplotlib pandas jupyter
 | pandas | ≥ 2.0 | Summary tables |
 | jupyter | ≥ 1.0 | Notebook execution |
 
----
-
-## Quick Start
-
-### Run the full pipeline in order:
-
-```bash
-jupyter notebook notebooks/01_ODE_tristability.ipynb
-```
-
-Or run a single experiment:
-
-```python
-# Minimal example — spatial PDE at L=1000 µm
-from scipy.integrate import solve_ivp
-import numpy as np
-
-# Parameters
-CFG = {'S1': 1.0, 'S2': 1.0, 'S3': 1.0, ...}  # see notebook 05
-L, Nx = 1000.0, 100
-dx = L / Nx
-
-# Build IC and run
-y0, x = build_ic(L, Nx, CFG, TR, SS_HEALTHY)
-sol = solve_ivp(pde_rhs, (0, 500), y0,
-                args=(CFG, TR, dx, Nx),
-                method='Radau', rtol=1e-5, atol=1e-7)
-```
-
----
 
 ## Model Equations
 
@@ -284,38 +226,7 @@ Longer axons contain proportionally more mitochondria → more total ROS product
 
 5. **S₂ (antioxidant defense) has the sharpest protective threshold** — Tristable window spans only ΔS₂ = 0.17 units, predicting abrupt disease onset from gradual age-related antioxidant decline.
 
----
 
-## References
-
-1. Yang, B., Yang, Z., & Hao, L. (2023). Dynamics of a model for the degradation mechanism of aggregated α-synuclein in Parkinson's disease. *Frontiers in Computational Neuroscience*, 17, 1068150.
-
-2. Daub, M., Waldherr, S., Allgöwer, F., Scheurich, P., & Schneider, G. (2012). Death wins against life in a spatially extended model of the caspase-3/8 feedback loop. *BioSystems*, 108(1), 45–51.
-
-3. Burke, S., & Trudeau, L.-E. (2022). Axonal domain structure as a putative identifier of neuron-specific vulnerability to oxidative stress in cultured neurons. *eNeuro*, 9(5).
-
-4. Puertollano, R. (2014). mTOR and lysosome regulation. *F1000Prime Reports*, 6, 52.
-
-5. Colla, E. (2019). Linking the Endoplasmic Reticulum to Parkinson's Disease and Alpha-Synucleinopathy. *Frontiers in Neuroscience*, 13, 560.
-
-6. Strikwerda, J.C. (2004). *Finite Difference Schemes and Partial Differential Equations*. SIAM.
-
-7. Hairer, E., & Wanner, G. (1996). *Solving Ordinary Differential Equations II: Stiff and Differential-Algebraic Problems*. Springer.
-
----
-
-## Citation
-
-```bibtex
-@misc{venkatesan2026asyn,
-  author       = {Venkatesan, Nitin Shreyes and Talukdar, Bivas},
-  title        = {Spatial PDE Modelling of α-Synuclein Aggregation
-                  in Parkinson's Disease},
-  year         = {2026},
-  institution  = {University of California San Diego},
-  note         = {BENG 227 Course Project, Group 8}
-}
-```
 
 ---
 
@@ -327,4 +238,4 @@ academic fair use.
 
 ---
 
-*For questions, contact: Nitin Shreyes Venkatesan (UC San Diego)*
+*For questions, contact: Nitin Shreyes Venkatesan (UC San Diego), Bivas Talukdar (UC San Diego)*
